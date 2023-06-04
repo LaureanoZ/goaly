@@ -6,7 +6,7 @@ defineEmits(['update:modelValue']);
 
 <template>
     <input
-        class="form-control"
+        class=""
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
     >

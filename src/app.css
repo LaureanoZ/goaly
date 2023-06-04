@@ -5,29 +5,52 @@
 }
 html, body, #app {
     height: 100%;
+    background-color: #35363a;
+
 }
 .grid-custom {
     display: grid;
-    grid-template-rows: 150px 1fr 100px;
+    grid-template-rows: 100px 1fr 100px;
     height: 100%;
   }
   
   nav {
     grid-row: 1 / 2;
     height: 100% !important;
-    background-color: #35363a;
+    background-color: #202123;
   }
   
   main {
     grid-row: 2 / 3;
     height: 100%;
+    background-color: #35363a;
   }
   
   footer {
     grid-row: 3 / 4;
     height: 100%;
-    background-color: #35363a;
+    background-color: #202123;
   }
+  /* general styles */
+  .full-height{
+    height: 100%;
+  }
+  /* buttons custom */
+  .btn-custom {
+    margin: 1rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: .8em;
+    text-transform: uppercase;
+    padding: 0.6em 1.2em;
+    transition: all .3s ease-in-out;
+   }
+
+
+
+
+
   .logo{
     max-width: 150px;
   }
@@ -59,6 +82,97 @@ html, body, #app {
   .custom-submit:hover{
     background-color: #1cd12b;
   }
+
+
+
+
+
+
+/* register and login */
+  .container-account{
+    background: #2a2b38;
+  }
+  .title-account{
+    margin-bottom: 1rem;
+    font-size: 2.5em;
+    font-weight: 500;
+    color: #f5f5f5;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .field-account{
+      margin-top: .5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5em;
+      background-color: #1f2029;
+      border-radius: 4px;
+      padding: .5em 1em;
+  }
+  .input-icon{
+    height: 1em;
+    width: 1em;
+    fill: #ffeba7;
+  }
+  
+  .input-account {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #d3d3d3;
+   }
+   .btn-account {
+    background-color: #ffeba7;
+    color: #5e6681;
+    box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%);
+   }
+   
+   .btn-link-account {
+    color: #f5f5f5;
+    display: block;
+    font-size: .75em;
+    transition: color .3s ease-out;
+   }
+   .field-account input:focus::placeholder {
+    opacity: 0;
+    transition: opacity .3s;
+   }
+   
+   .btn-account:hover {
+    background-color: #5e6681;
+    color: #ffeba7;
+    box-shadow: 0 8px 24px 0 rgb(16 39 112 / 20%);
+   }
+   
+/* Goals screen */
+.container-goals{
+  background: #2a2b38;
+  border-radius: 20px;
+}
+.container-goals-content{
+  height: 100%;
+}
+.btn-chat{
+  background-color: #29d0fd;
+  color: #ffffff;
+}
+.btn-chat:hover {
+  background-color: #029ec9;
+  color: #ffffff;
+  box-shadow: 0 8px 24px 0 rgba(6, 141, 231, 0.2);
+ }
+.btn-done{
+  background-color: #00ff40;
+  color: #ffffff;
+  box-shadow: 0 8px 24px 0 rgba(48, 209, 33, 0.2);
+}
+.btn-done:hover {
+  background-color: #00ff40;
+  color: #ffffff;
+  box-shadow: 0 8px 24px 0 rgba(11, 105, 74, 0.2);
+ }
 
   @media screen and (max-width: 992px) {
     .grid-custom {
