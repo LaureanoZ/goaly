@@ -17,7 +17,7 @@
                         </div>
                         <div class="col-12">
                             <div class="row justify-content-center align-items-center full-height">
-                                <a class="col-9 col-sm-4 btn-custom btn-chat text-center text-decoration-none" href="#">Abrir Chat</a>
+                                <router-link class="col-9 col-sm-4 btn-custom btn-chat text-center text-decoration-none" to="/chat">Abrir Chat</router-link>
                                 <a class="col-9 col-sm-4 btn-custom btn-done text-center text-decoration-none" href="#">Hecho</a>
                             </div>
                         </div>
