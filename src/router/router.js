@@ -9,6 +9,7 @@ import Shield from '../views/Shield.vue'
 import Profile from '../views/Profile.vue'
 import NotFound from '../views/NotFound.vue'
 import Home from '../views/Home.vue'
+import Groups from '../views/Groups.vue'
 import Goals from '../views/Goals.vue'
 
 
@@ -16,7 +17,8 @@ const routes = [
     { path: '/',                 component: Home },
     { path: '/shield',           component: Shield,   meta: { requiresAuth: true, } },
     { path: '/chat',             component: Chat,     meta: { requiresAuth: true, }},
-    { path: '/goals',             component: Goals,     meta: { requiresAuth: true, }},
+    { path: '/groups',           component: Groups,     meta: { requiresAuth: true, }},
+    { path: '/goals',            component: Goals,     meta: { requiresAuth: true, }},
     { path: '/login',            component: Login },
     { path: '/register',         component: Register },
     { path: '/profile',          component: Profile,  meta: { requiresAuth: true, }},

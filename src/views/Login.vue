@@ -24,7 +24,7 @@ function useLogin() {
         });
         cargando.value = false;
 
-        router.push('/chat');
+        router.push('/goals');
     }
 
     return {
@@ -36,7 +36,7 @@ function useLogin() {
 </script>
 
 <template>
-    <section class="container-account row p-5 mt-5">
+    <section class="container-account row p-5 full-height">
         <div id="login">
             <h1 class="title-account">Iniciar Sesión</h1>
         </div>

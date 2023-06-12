@@ -3,178 +3,211 @@
   font-family: Richard;
   src: url('resources/fonts/Richard-Samuels.otf');
 }
-html, body, #app {
-    height: 100%;
-    background-color: #35363a;
+
+html,
+body,
+#app {
+  height: 100%;
+  background-color: #35363a;
 
 }
-.grid-custom {
-    display: grid;
-    grid-template-rows: 1fr 80px;
-    height: 100%;
-  }
-  
-  main {
-    grid-row: 1 / 2;
-    height: 100%;
-    background-color: #35363a;
-  }
-  
-  .botonera {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #1a1919;
-    display: flex;
-    justify-content: space-around;
-    z-index: 99999;
-  }
-  /* general styles */
-  .full-height{
-    height: 100%;
-  }
-  .full-width{
-    width: 100%;
-  }
-  /* buttons custom */
-  .btn-custom {
-    margin: 1rem;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: .8em;
-    text-transform: uppercase;
-    padding: 0.6em 1.2em;
-    transition: all .3s ease-in-out;
-   }
 
-
-
-
-
-  .logo{
-    max-width: 150px;
-  }
-  .dm-font{
-    font-family: 'Richard';
-  }
-  .img-card{
-    max-height: 300px;
-  }
-  .scrollable-container {
-    max-height: 500px;
-    overflow-y: auto;
-  }
-  .custom-button{
-    background-color: #d90000;
-  }
-  .custom-button:hover{
-    background-color: #f81d1d;
-  }
-  .custom-button-cta{
-    background-color: #4467da;
-  }
-  .custom-button-cta:hover{
-    background-color: #4b73f7;
-  }
-  .custom-submit:hover{
-    background-color: #1cd12b;
-  }
-
-
-
-
-
-
-/* register and login */
-  .container-account{
-    background: #2a2b38;
-  }
-  .title-account{
-    margin-bottom: 1rem;
-    font-size: 2.5em;
-    font-weight: 500;
-    color: #f5f5f5;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  .field-account{
-      margin-top: .5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5em;
-      background-color: #1f2029;
-      border-radius: 4px;
-      padding: .5em 1em;
-  }
-  .input-icon{
-    height: 1em;
-    width: 1em;
-    fill: #ffeba7;
-  }
-  
-  .input-account {
-    background: none;
-    border: none;
-    outline: none;
-    width: 100%;
-    color: #d3d3d3;
-   }
-   .btn-account {
-    background-color: #ffeba7;
-    color: #5e6681;
-    box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%);
-   }
-   
-   .btn-link-account {
-    color: #f5f5f5;
-    display: block;
-    font-size: .75em;
-    transition: color .3s ease-out;
-   }
-   .field-account input:focus::placeholder {
-    opacity: 0;
-    transition: opacity .3s;
-   }
-   
-   .btn-account:hover {
-    background-color: #5e6681;
-    color: #ffeba7;
-    box-shadow: 0 8px 24px 0 rgb(16 39 112 / 20%);
-   }
-   
-/* Goals screen */
-.container-goals{
-  background: #2a2b38;
-  border-radius: 20px;
+main {
+  height: 100%;
+  background-color: #35363a;
 }
-.container-goals-content{
+
+.botonera {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1a1919;
+  display: flex;
+  justify-content: space-around;
+  z-index: 9999;
+}
+
+/* general styles */
+.full-height {
   height: 100%;
 }
-.btn-chat{
+
+.full-width {
+  width: 100%;
+}
+
+/* buttons custom */
+.btn-custom {
+  margin: 1rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: .8em;
+  text-transform: uppercase;
+  padding: 0.6em 1.2em;
+  transition: all .3s ease-in-out;
+}
+
+/* register and login */
+.container-account {
+  background: #2a2b38;
+}
+
+.title-account {
+  margin-bottom: 1rem;
+  font-size: 1.8em;
+  font-weight: 500;
+  color: #f5f5f5;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.field-account {
+  margin-top: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5em;
+  background-color: #1f2029;
+  border-radius: 4px;
+  padding: .5em 1em;
+}
+
+.input-icon {
+  height: 1em;
+  width: 1em;
+  fill: #ffeba7;
+}
+
+.input-account {
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #d3d3d3;
+}
+
+.btn-account {
+  background-color: #ffeba7;
+  color: #5e6681;
+  box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%);
+}
+
+.btn-account-register {
+  background-color: #b7e251;
+  color: #5e6681;
+  box-shadow: 0 8px 24px 0 rgba(169, 252, 16, 0.2);
+}
+
+.btn-link-account {
+  color: #f5f5f5;
+  display: block;
+  font-size: .75em;
+  transition: color .3s ease-out;
+}
+
+.field-account input:focus::placeholder {
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.btn-account:hover {
+  background-color: #5e6681;
+  color: #ffeba7;
+  box-shadow: 0 8px 24px 0 rgb(16 39 112 / 20%);
+}
+
+.btn-account-register:hover {
+  background-color: #787a83;
+  color: #ffeba7;
+  box-shadow: 0 8px 24px 0 rgba(50, 62, 102, 0.2);
+}
+
+/* Goals screen */
+.container-goals {
+  background: #2a2b38;
+  border-radius: 20px;
+  position: relative;
+  height: 116px;
+}
+.goal-title-card{
+  font-size: 1rem;
+}
+.container-goals-content {
+  height: 100%;
+}
+
+.btn-chat {
   background-color: #29d0fd;
   color: #ffffff;
 }
+
 .btn-chat:hover {
   background-color: #029ec9;
   color: #ffffff;
   box-shadow: 0 8px 24px 0 rgba(6, 141, 231, 0.2);
- }
-.btn-done{
+}
+
+.btn-done {
   background-color: #00ff40;
   color: #ffffff;
   box-shadow: 0 8px 24px 0 rgba(48, 209, 33, 0.2);
 }
+
 .btn-done:hover {
   background-color: #00ff40;
   color: #ffffff;
   box-shadow: 0 8px 24px 0 rgba(11, 105, 74, 0.2);
- }
+}
 
- /* shields screen */
- .card-goal {
+.button-container {
+  position: fixed;
+  bottom: 81px;
+  right: -275px;
+}
+.button-container-card {
+  position: absolute;
+  bottom: 103px;
+  right: 0px;
+}
+.round-button-card {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: #e0e0e0;
+  color: black;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+
+}
+.icon-card-goal{
+  color: rgb(235, 106, 20);
+  position: absolute;
+  height: 45px;
+  top: -13px;
+  left: 3px;
+}
+
+.round-button {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #f3bb03;
+  color: black;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+.round-button:hover {
+  background-color: #f1cf5d;
+}
+
+/* shields screen */
+.card-goal {
   margin: auto;
   position: relative;
   width: 200px;
@@ -216,14 +249,17 @@ html, body, #app {
   filter: blur(12px);
   animation: blob-bounce 5s infinite ease;
 }
-.img-goal{
+
+.img-goal {
   max-width: 90px;
   margin: 20px 0 0px 55px;
 }
-.title-shield{
+
+.title-shield {
   margin-bottom: 23px;
 }
-.btn-shield{
+
+.btn-shield {
   background-color: #00ff40;
   color: #ffffff;
   box-shadow: 0 8px 24px 0 rgba(48, 209, 33, 0.2);
@@ -253,13 +289,20 @@ html, body, #app {
 }
 
 /* chat screen */
-.container-main-settings{
+.container-main-settings {
   height: 76px;
 }
-.container-chat-settings{
+
+.container-chat-settings {
   background: #2a2b38;
   border-radius: 20px;
 }
+
+.scrollable-container {
+  max-height: 534px;
+  overflow-y: auto;
+}
+
 .search__btn {
   border: none;
   cursor: pointer;
@@ -267,9 +310,11 @@ html, body, #app {
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
 }
+
 .search__btn:hover {
   background-color: rgb(60, 95, 66);
 }
+
 .input-chat {
   outline: none;
   font-size: 14px;
@@ -291,10 +336,36 @@ html, body, #app {
   border: 2px solid #ffeba7;
   background-color: #0e0e10;
 }
-  @media screen and (max-width: 992px) {
-    .grid-custom {
-        display: grid;
-        grid-template-rows: 0.1fr 1fr 100px;
-        height: 100%;
-      }
+
+.date-chat {
+  font-size: 12px;
+}
+
+/* home screen */
+.container-home {
+  z-index: 200;
+}
+/* profile screen */
+.btn-logout{
+  background-color: rgb(138, 25, 25);
+  color: white;
+}
+.btn-logout:hover{
+  background-color: rgb(185, 38, 38);
+}
+
+/* group screen */
+.container-group {
+  background: #2a2b38;
+  border-radius: 20px;
+  position: relative;
+  height: 140px;
+}
+/* responsive */
+@media screen and (max-width: 992px) {
+  .grid-custom {
+    display: grid;
+    grid-template-rows: 0.1fr 1fr 100px;
+    height: 100%;
   }
+}
