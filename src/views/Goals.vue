@@ -1,5 +1,64 @@
 <script setup>
-import {ref} from "vue"
+import {createGoal, readGoals, updateGoal} from "../services/goals"
+import {ref, onMounted, watch} from "vue"
+import { useAuth } from "../composition/useAuth.js";
+// watchers
+const { user } = useAuth();
+let idUser = ref('')
+watch(user, async (newValue) => {
+    if (newValue.id) {
+        await getFilterGoals(newValue.id);
+        idUser.value = newValue.id;
+    }
+});
+let goalDatadinamic = ref(null);
+watch(goalDatadinamic, (newValue) => {
+      if(newValue){
+        goalDatadinamic = newValue;
+      }
+    });
+
+// Create Goal
+let titleGoal = ref('');
+const handleGoal = async function (idUser) {
+    let data =  {
+        user: 'HX3OGbwfaTUPZIuMLos4TJELUMr2',
+        titleGoal: titleGoal.value,
+    }
+    createGoal(data);
+    console.log(idUser, titleGoal.value);
+    return data
+}
+
+// Read Goal
+let goals = ref([]);
+async function getFilterGoals (data) {
+
+        // console.log('saraza?', data)
+        // Llamada a la función readGoal para obtener los datos del objetivo
+        let goalData = await readGoals(data);
+        goals.value = goalData
+}
+
+// update goal
+async function markGoalAsDone() {
+      const goalId = 'TWetCZvdpOkxWXvnd56V'; // Reemplaza con el ID del goal que deseas actualizar
+      await updateGoal(goalId, true);
+      console.log('Goal marked as done');
+}
+async function markGoalAsNotDone() {
+      const goalId = 'TWetCZvdpOkxWXvnd56V'; // Reemplaza con el ID del goal que deseas actualizar
+      await updateGoal(goalId, false);
+      console.log('Goal marked as not done');
+    }
+
+
+
+
+
+
+
+// visualizacion
 let streak = ref(true);
 const HandlePopUp = function () {
     if(streak.value === true){
@@ -8,12 +67,14 @@ const HandlePopUp = function () {
         streak.value = true;
     }
 }
+
+
 </script>
 
 <template>
     <section class="row justify-content-center mx-1">
         <h2 class="text-center text-white mt-4 col-11">Objetivos</h2>
-        <article class="col-12 container-goals my-2 p-2" v-for="i in 4">
+        <article class="col-12 container-goals my-2 p-2" v-for="goal in goals">
             <div class="button-container-card">
                 <button @click.prevent="HandlePopUp" class="round-button-card">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -28,21 +89,19 @@ const HandlePopUp = function () {
                     <div class="row justify-content-center align-items-center container-goals-content">
                         <template v-if="streak === true">
                             <div class="col-12">
-                                <h3 class="text-center text-white goal-title-card mt-2">Correr 1h todos los dias</h3>
+                                <h3 class="text-center text-white goal-title-card mt-2">{{ goal.titleGoal }}</h3>
                             </div>
                             <div class="col-12">
                                 <div class="row justify-content-center align-items-center full-height">
-                                    <a class="col-9 col-sm-4 btn-custom btn-done text-center text-decoration-none"
-                                    href="#">Hecho</a>
+                                    <button class="col-9 col-sm-4 btn-custom btn-done text-center text-decoration-none" @click="markGoalAsDone">Hecho</button>
+                                    <button class="col-9 col-sm-4 btn-custom btn-primary text-center text-decoration-none" @click="markGoalAsNotDone">No Hecho</button>
                                 </div>
                             </div>
                         </template>
                         <template v-else>
                             <div class="col-12">
                                 <h3 class="text-center text-white goal-title-card mt-2 mb-0">Racha de:</h3>
-                                <p class="text-center text-white mb-0">4 dias consecutivos</p>
-                                <p class="text-center text-white mb-0">l m m j v s d</p>
-                                <p class="text-center text-white mb-0">v v x v v v v</p>
+                                <p class="text-center text-white mb-0">{{ goal.streak }} dias consecutivos</p>
 
                             </div>
                         </template>
@@ -69,18 +128,18 @@ const HandlePopUp = function () {
                     </div>
                     <div class="modal-body">
                         <form action="">
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="modalidad">Modalidad</label>
                                 <select class="form-control" name="modalidad" id="modalidad">
                                     <option value="alone">Solo</option>
                                     <option value="group">En Grupo</option>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="form-group">
-                                <label for="participantes">Añadir participantes</label>
-                                <input class="form-control" type="text" id="participantes">
+                                <label for="titleGoal">Titulo de tu Goal</label>
+                                <input class="form-control" type="text" id="titleGoal" v-model="titleGoal">
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="multa">Multa</label>
                                 <select class="form-control" name="multa" id="multa">
                                     <option value="multaSi">Si</option>
@@ -94,12 +153,12 @@ const HandlePopUp = function () {
                             <div class="form-group">
                                 <label for="objetivo">Objetivo</label>
                                 <input class="form-control" type="text" id="objetivo">
+                            </div> -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button @click.prevent="handleGoal" type="submit" class="btn btn-primary">Crear</button>
                             </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary">Crear</button>
                     </div>
                 </div>
             </div>

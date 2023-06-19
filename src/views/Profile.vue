@@ -2,9 +2,27 @@
 import { logout } from "../services/auth.js";
 import { useRouter } from "vue-router";
 import { useAuth } from "../composition/useAuth.js";
+import { getUserById } from "../services/users.js";
+import { onBeforeMount, ref } from "vue";
 
 const { user } = useAuth();
 const { handleLogout } = useLogout();
+
+
+
+
+// function userData(){
+//     let userId
+//     let userEmail
+//     onMounted(() => {
+//         // Código a ejecutar cuando el componente se monta
+//         userId = user.value.id
+//         userEmail= user.value.email
+//         // Ejemplo: Obtener datos de una API
+//     });
+//     return {userId, userEmail};
+// }
+// let {userId} =  userData()  
 
 
 function useLogout() {
