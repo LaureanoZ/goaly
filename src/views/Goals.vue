@@ -20,13 +20,13 @@ watch(goalDatadinamic, (newValue) => {
 
 // Create Goal
 let titleGoal = ref('');
-const handleGoal = async function (idUser) {
+const handleGoal = async function (newValue) {
     let data =  {
-        user: 'HX3OGbwfaTUPZIuMLos4TJELUMr2',
+        user: idUser.value,
         titleGoal: titleGoal.value,
     }
     createGoal(data);
-    console.log(idUser, titleGoal.value);
+    console.log('saraza?', idUser.value, titleGoal.value);
     return data
 }
 
@@ -37,35 +37,78 @@ async function getFilterGoals (data) {
         // console.log('saraza?', data)
         // Llamada a la función readGoal para obtener los datos del objetivo
         let goalData = await readGoals(data);
+        console.log(goalData)
         goals.value = goalData
 }
 
+
 // update goal
-async function markGoalAsDone() {
-      const goalId = 'TWetCZvdpOkxWXvnd56V'; // Reemplaza con el ID del goal que deseas actualizar
+async function markGoalAsDone(data) {
+      const goalId = data; // Reemplaza con el ID del goal que deseas actualizar
       await updateGoal(goalId, true);
       console.log('Goal marked as done');
+      console.log(data)
 }
-async function markGoalAsNotDone() {
-      const goalId = 'TWetCZvdpOkxWXvnd56V'; // Reemplaza con el ID del goal que deseas actualizar
+async function markGoalAsNotDone(data) {
+      const goalId = data; // Reemplaza con el ID del goal que deseas actualizar
       await updateGoal(goalId, false);
       console.log('Goal marked as not done');
     }
+// const disabledGoals = ref(JSON.parse(localStorage.getItem('disabledGoals')) || []);
+
+// async function markGoalAsDone(data) {
+//   const goalId = data;
+//   await updateGoal(goalId, true);
+
+//   disabledGoals.value.push(goalId);
+//   saveDisabledGoals(); // Guarda la lista de objetivos deshabilitados en el almacenamiento local
+
+//   setTimeout(() => {
+//     const index = disabledGoals.value.indexOf(goalId);
+//     if (index !== -1) {
+//       disabledGoals.value.splice(index, 1);
+//       saveDisabledGoals(); // Actualiza la lista de objetivos deshabilitados en el almacenamiento local
+//     }
+//   }, 24 * 60 * 60 * 1000);
+
+//   console.log('Goal marked as done');
+//   console.log(data);
+// }
+
+// async function markGoalAsNotDone(data) {
+//   const goalId = data;
+//   await updateGoal(goalId, false);
+
+//   disabledGoals.value.push(goalId);
+//   saveDisabledGoals(); // Guarda la lista de objetivos deshabilitados en el almacenamiento local
+
+//   setTimeout(() => {
+//     const index = disabledGoals.value.indexOf(goalId);
+//     if (index !== -1) {
+//       disabledGoals.value.splice(index, 1);
+//       saveDisabledGoals(); // Actualiza la lista de objetivos deshabilitados en el almacenamiento local
+//     }
+//   }, 24 * 60 * 60 * 1000);
+
+//   console.log('Goal marked as not done');
+//   console.log(data);
+// }
+
+// // Función para guardar la lista de objetivos deshabilitados en el almacenamiento local
+// function saveDisabledGoals() {
+//   localStorage.setItem('disabledGoals', JSON.stringify(disabledGoals.value));
+// }
 
 
+// ver racha
+const selectedGoal = ref(null);
 
-
-
-
-
-// visualizacion
-let streak = ref(true);
-const HandlePopUp = function () {
-    if(streak.value === true){
-        streak.value = false;
-    }else{
-        streak.value = true;
-    }
+const HandlePopUp = function (goalId) {
+    if (selectedGoal.value === goalId) {
+        selectedGoal.value = null;
+      } else {
+        selectedGoal.value = goalId;
+      }
 }
 
 
@@ -74,9 +117,9 @@ const HandlePopUp = function () {
 <template>
     <section class="row justify-content-center mx-1">
         <h2 class="text-center text-white mt-4 col-11">Objetivos</h2>
-        <article class="col-12 container-goals my-2 p-2" v-for="goal in goals">
+        <article class="col-12 container-goals my-2 p-2" v-for="goal in goals" :key="goal.id">
             <div class="button-container-card">
-                <button @click.prevent="HandlePopUp" class="round-button-card">
+                <button @click.prevent="HandlePopUp(goal.id)" class="round-button-card">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-fire icon-card-goal" viewBox="0 0 16 16">
                         <path
@@ -87,22 +130,22 @@ const HandlePopUp = function () {
             <div class="row justify-content-center align-items-stretch">
                 <div class="col-11">
                     <div class="row justify-content-center align-items-center container-goals-content">
-                        <template v-if="streak === true">
+                        <template v-if="selectedGoal === goal.id">
+                            <div class="col-12">
+                                <h3 class="text-center text-white goal-title-card mt-2 mb-0">Racha de:</h3>
+                                <p class="text-center text-white mb-0">{{ goal.streak }} dias consecutivos</p>
+
+                            </div>
+                        </template>
+                        <template v-else>
                             <div class="col-12">
                                 <h3 class="text-center text-white goal-title-card mt-2">{{ goal.titleGoal }}</h3>
                             </div>
                             <div class="col-12">
                                 <div class="row justify-content-center align-items-center full-height">
-                                    <button class="col-9 col-sm-4 btn-custom btn-done text-center text-decoration-none" @click="markGoalAsDone">Hecho</button>
-                                    <button class="col-9 col-sm-4 btn-custom btn-primary text-center text-decoration-none" @click="markGoalAsNotDone">No Hecho</button>
+                                    <button class="col-9 col-sm-4 btn-custom btn-done text-center text-decoration-none" @click="markGoalAsDone(goal.id)">Hecho</button>
+                                    <button class="col-9 col-sm-4 btn-custom btn-primary text-center text-decoration-none" @click="markGoalAsNotDone(goal.id)">No Hecho</button>
                                 </div>
-                            </div>
-                        </template>
-                        <template v-else>
-                            <div class="col-12">
-                                <h3 class="text-center text-white goal-title-card mt-2 mb-0">Racha de:</h3>
-                                <p class="text-center text-white mb-0">{{ goal.streak }} dias consecutivos</p>
-
                             </div>
                         </template>
                     </div>

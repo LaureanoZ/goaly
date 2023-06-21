@@ -1,25 +1,42 @@
 import {db} from './firebase.js';
-import {setDoc, getDoc, getDocs, doc, collection} from 'firebase/firestore';
+import {setDoc, getDoc, getDocs, doc, collection, updateDoc} from 'firebase/firestore';
 
 export function createUser(id, {email}) {
-    const userRef = doc(db, 'users', id);
+  const userRef = doc(db, 'users', id);
 
-    return setDoc(userRef, {
-        email
-    });
+  return setDoc(userRef, {
+      email
+  });
 }
+
+export async function updateUser(id, {displayName, description, cvu, photoURL}) {
+  return updateDoc(
+      doc(db, 'users', id),
+      {
+          displayName,
+          description,
+          cvu,
+          photoURL,
+      }
+  );
+}
+
 export async function getUserById(id) {
-    const userRef = doc(db, 'users', id);
+  const userRef = doc(db, 'users', id);
 
-    const user = await getDoc(userRef);
+  const user = await getDoc(userRef);
 
-    if(!user.exists()) {
-        throw new Error('no se encuentre el usuario');
-    }
-    return {
-        id,
-        email: user.data().email,
-    }
+  if(!user.exists()) {
+      throw new Error('[users.js getUserById] No existe el usuario con el id provisto');
+  }
+
+  return {
+      id,
+      email: user.data().email,
+      displayName: user.data().displayName,
+      description: user.data().description,
+      cvu: user.data().cvu,
+  }
 }
 export const getUsers = async (id) => {
     const docRef = doc(db, "users", id);

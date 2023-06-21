@@ -137,7 +137,6 @@ main {
 .container-goals-content {
   height: 100%;
 }
-
 .btn-chat {
   background-color: #29d0fd;
   color: #ffffff;
@@ -160,7 +159,14 @@ main {
   color: #ffffff;
   box-shadow: 0 8px 24px 0 rgba(11, 105, 74, 0.2);
 }
-
+.btn-disable{
+  background-color: #787a83;
+  box-shadow: none;
+}
+.btn-disable:hover{
+  background-color: #787a83;
+  box-shadow: none;
+}
 .button-container {
   position: fixed;
   bottom: 81px;
@@ -211,7 +217,7 @@ main {
   margin: auto;
   position: relative;
   width: 200px;
-  height: 250px;
+  height: 160px;
   border-radius: 14px;
   z-index: 1111;
   overflow: hidden;
@@ -227,13 +233,17 @@ main {
   top: 5px;
   left: 5px;
   width: 190px;
-  height: 240px;
+  height: 150px;
   z-index: 2;
   background: #2a2b38;
   backdrop-filter: blur(24px);
   border-radius: 10px;
   overflow: hidden;
   outline: 2px solid #2a2b38;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .blob {
@@ -255,15 +265,10 @@ main {
   margin: 20px 0 0px 55px;
 }
 
-.title-shield {
-  margin-bottom: 23px;
-}
-
 .btn-shield {
   background-color: #00ff40;
   color: #ffffff;
   box-shadow: 0 8px 24px 0 rgba(48, 209, 33, 0.2);
-  margin-left: 55px;
 }
 
 @keyframes blob-bounce {

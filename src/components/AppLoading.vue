@@ -21,7 +21,7 @@ defineProps({
   width: 50px !important;
   height: 50px!important;
 
-  --c: radial-gradient(farthest-side,#F41010 92%,#0000);
+  --c: radial-gradient(farthest-side,#4cc016 92%,#0000);
   background: 
     var(--c) 50%  0, 
     var(--c) 50%  100%, 
@@ -37,7 +37,7 @@ defineProps({
   
   inset:0;
   margin: 3px;
-  background:repeating-conic-gradient(#0000 0 35deg,#F41010 0 90deg);
+  background:repeating-conic-gradient(#0000 0 35deg,#4cc016 0 90deg);
   -webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 3px),#000 0);
   border-radius: 50%;
 }
