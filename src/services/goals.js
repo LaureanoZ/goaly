@@ -66,15 +66,3 @@ export async function readGoals(user) {
         console.log("No such document!");
     }
 }
-
-
-  // export async function addStreak (data) {
-    //     const docRef = collection(db, 'goals', data, 'streak');
-    //     const streakRef = await addDoc(docRef, {
-    //         result: false,
-    //         streakDate: serverTimestamp(),
-    //     })
-    
-    //     return streakRef
-        
-    // }
