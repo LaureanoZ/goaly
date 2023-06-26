@@ -15,6 +15,7 @@ body,
 main {
   height: 100%;
   background-color: #35363a;
+  position: relative;
 }
 
 .botonera {
@@ -26,6 +27,7 @@ main {
   display: flex;
   justify-content: space-around;
   z-index: 9999;
+  height: 60px; 
 }
 
 /* general styles */
@@ -36,7 +38,14 @@ main {
 .full-width {
   width: 100%;
 }
-
+.pcustom{
+  padding-bottom: 80px;
+}
+.disable {
+  pointer-events: none;
+  opacity: 0.5;
+  /* Otros estilos deshabilitados */
+}
 /* buttons custom */
 .btn-custom {
   margin: 1rem;
@@ -141,7 +150,18 @@ main {
   background-color: #29d0fd;
   color: #ffffff;
 }
+.feedback-container {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 60vw;
+}
 
+.alert {
+  margin: 10px auto;
+}
 .btn-chat:hover {
   background-color: #029ec9;
   color: #ffffff;
@@ -167,11 +187,7 @@ main {
   background-color: #787a83;
   box-shadow: none;
 }
-.button-container {
-  position: fixed;
-  bottom: 81px;
-  right: -275px;
-}
+
 .button-container-card {
   position: absolute;
   bottom: 103px;
@@ -197,20 +213,6 @@ main {
   left: 3px;
 }
 
-.round-button {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  background-color: #f3bb03;
-  color: black;
-  font-size: 24px;
-  border: none;
-  cursor: pointer;
-}
-
-.round-button:hover {
-  background-color: #f1cf5d;
-}
 
 /* shields screen */
 .card-goal {

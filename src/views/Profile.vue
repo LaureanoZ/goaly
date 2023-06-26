@@ -6,6 +6,7 @@ import { updateUserProfile } from "../services/auth.js";
 import { watch, ref } from "vue";
 import AppLoading from "../components/AppLoading.vue";
 import AppImage from "../components/AppImage.vue";
+import AppNavButtons from "../components/AppNavButtons.vue";
 
 
 const { user } = useAuth();
@@ -72,14 +73,14 @@ function useLogout() {
         handleLogout() {
             logout();
             // Redireccionamos al usuario al login.
-            router.push({ path: '/login' });
+            router.push({ path: '/' });
         }
     }
 }
 </script>
 
 <template>
-    <section class="row justify-content-center mt-5">
+    <section class="row justify-content-center mt-5 pcustom">
       <h1 class="mb-4 text-4xl dm-font text-light text-center">Perfil de usuario</h1>
   
       <div class="col-lg-6" v-if="showForm">
@@ -121,6 +122,10 @@ function useLogout() {
             <p class="mb-0 text-white">{{ form.displayName }}</p>
           </div>
           <div class="mb-3">
+            <p class="fw-bold mb-0 text-white">Email de usuario:</p>
+            <p class="mb-0 text-white">{{ user.email }}</p>
+          </div>
+          <div class="mb-3">
             <p class="fw-bold mb-0 text-white">Descripción:</p>
             <p class="mb-0 text-white">{{ form.description }}</p>
           </div>
@@ -138,4 +143,5 @@ function useLogout() {
         </form>
       </div>
     </section>
+    <AppNavButtons></AppNavButtons>
   </template>

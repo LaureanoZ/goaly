@@ -2,6 +2,7 @@
 import AppButton from "../components/AppButton.vue";
 import AppInput from "../components/AppInput.vue";
 import AppLoading from "../components/AppLoading.vue";
+import AppNavButtons from "../components/AppNavButtons.vue";
 
 import { fechaAString } from "../helpers/date.js";
 import { sendMessage, subscribeToChatMessages } from "../services/chat.js"
@@ -73,7 +74,7 @@ function useChatForm() {
 </script>
 
 <template>
-  <section class="row mt-2">
+  <section class="row mt-2 pcustom">
     <div class="col-12 container-main-settings mt-2">
       <div class="row justify-content-between align-items-center container-chat-settings p-2">
         <div class="col-10">
@@ -126,7 +127,7 @@ function useChatForm() {
       </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade pb-5" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -163,4 +164,6 @@ function useChatForm() {
       </div>
     </div>
   </div>
-</section></template>
+</section>
+<AppNavButtons></AppNavButtons>
+</template>

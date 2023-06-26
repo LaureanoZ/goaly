@@ -1,8 +1,11 @@
 <script setup>
+import AppNavButtons from "../components/AppNavButtons.vue";
+
 </script>
 <template>
-    <section class="row justify-content-center mx-1">
+    <section class="row justify-content-center mx-1 pb-5">
         <h2 class="text-center text-white mt-4 col-11">Chats</h2>
+        <p class="text-center text-danger">Proximamente disponible</p>
         <article class="col-12 container-group my-4 p-4" v-for="i in 4">
             <div class="row justify-content-center align-items-stretch">
                 <div class="col-3">
@@ -28,4 +31,5 @@
             </div>
         </article>
     </section>
+    <AppNavButtons></AppNavButtons>
 </template>

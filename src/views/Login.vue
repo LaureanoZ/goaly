@@ -57,8 +57,11 @@ function useLogin() {
                     </svg>
                     <AppInput class="input-account" id="password" type="password" name="password" v-model="dataAuth.password" placeholder = "Escribe tu Contraseña" />
                 </div>
-            <div class="form-group d-flex justify-content-center mt-4">
-                <button class="btn-custom btn-account" type="submit">Iniciar Sesión</button>
+                <div class="form-group d-flex justify-content-center mt-4">
+                <button class="btn-custom btn-secondary">
+                    <router-link to="/" class="text-decoration-none text-dark  fw-bold col-2">Atras</router-link>
+                </button>
+                <button class="btn-custom btn-account col-4" type="submit">Iniciar Sesión</button>
             </div>
         </form>
     </section>

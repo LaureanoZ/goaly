@@ -65,7 +65,6 @@ export async function register({email, password}) {
         const credentials = await createUserWithEmailAndPassword(auth, email, password);
         const user = credentials.user;
 
-        // Grabamos el usuario en la base de datos.
         await createUser(user.uid, {
             email: user.email,
         });
@@ -89,7 +88,7 @@ export async function updateUserProfile(id, {displayName, description, cvu, phot
     let photoPath = user.photoURL;
 
     if(photoURL) {
-        photoPath = user.id + '/avatar.jpg'; // TODO: Manejar diferentes tipos de imagen.
+        photoPath = user.id + '/avatar.jpg';
         promises.push(uploadFileUsingString(photoPath, photoURL));
     }
 
